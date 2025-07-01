@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Izel's Sweet 16</title>
+  <link href="https://fonts.googleapis.com/css2?family=The+Seasons&display=swap" rel="stylesheet">
+
+
+  <style>
+    body {
+  	margin: 0;
+  	padding: 0;
+  	font-family: 'The Seasons', serif;
+  	color: white;
+  	text-align: center;
+	background-color: #111;
+  	background-image: url('background.jpg');
+ 	background-position: center;
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    h1{
+    font-family: 'The Seasons', serif;
+     color: white;
+     font-size: 80px;
+    }
+
+    h2{
+    font-family: 'The Seasons', serif;
+     color: white;
+     font-size: 30px;
+    }
+
+    .info {
+     font-family: 'The Seasons', serif;
+     color: white;
+     font-size: 30px;
+    }
+
+    #countdown {
+      font-size: 30px;
+      margin-bottom: 40px;
+      color: white;
+    }
+
+    form {
+      background-color: rgba(34, 34, 34, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    input, textarea {
+      width: 300px;
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ffd700;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay">
+
+  <h1>Izel's Sweet 16</h1>
+
+  <div class="info">
+    <p>You're invited to a magical night of celebration!</p>
+    <p><strong>Date:</strong> August 30, 2025</p>
+    <p><strong>Time:</strong> 4:00 PM - 12:00 AM </p>
+    <p><strong>Location:</strong> 200 N 11th St, Fort Smith, AR 72901 </p>
+    <P><strong>Room:</strong> Sphinx </p>
+  </div>
+<!-- Music Play Button -->
+<p>
+  <button onclick="document.getElementById('bgMusic').play()" style="padding: 10px 20px; font-size: 20px; background-color: black; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    🎵 TAP TO PLAY MUSIC!
+  </button>
+</p>
+
+<audio id="bgMusic" loop>
+  <source src="ivan_song.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+  <!-- Countdown Timer -->
+  <div id="countdown">Countdown: Loading...</div>
+
+  <!-- RSVP Form -->
+  <h2>Please RSVP Below</h2>
+  <form action="https://formspree.io/f/mvgropld" method="POST">
+    <input type="text" name="name" placeholder="Your Full Name" required><br>
+    <textarea name="message" placeholder="Will you be attending? If yes, how many will be attending with you?" rows="4" required></textarea><br>
+    <input type="submit" value="Submit RSVP">
+  </form>
+
+
+<!-- Countdown Script -->
+<script>
+  const eventDate = new Date("August 30, 2025 17:00:00").getTime();
+
+  const countdown = document.getElementById("countdown");
+
+  setInterval(function () {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance <= 0) {
+      countdown.innerHTML = "🎉 It's time to celebrate!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }, 1000);
+</script>
+
+</body>
+</html>
